@@ -32,7 +32,9 @@ const userSchema = mongoose.Schema({
         maxlength: 10
     },
     role: {
-        ...baseField,
+        type: String,
+        required: false,
+        trim: true,
         enum: ["admin", "staff", "instructor", "student"],
         default: "student"
     },

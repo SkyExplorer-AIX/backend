@@ -31,8 +31,21 @@ function isAuthenticated(req, res, next) {
  */
 function hasRole(role) {
     return function (req, res, next) {
-        if (req.user.role !== role)
-            return res.status(403).send('Access Denied: You dont have correct role');
+        const token = req.headers['x-access-token'] || req.headers['authorization'];
+        if (!token)
+            return res.status(401).send('Access Denied: No Token Provided!');
+
+        try {
+            req.user = jwt.decode(token, process.env.ACCESS_TOKEN_SECRET);
+
+            if (req.user.role !== role) {
+                return res.status(403).send('Access Denied: Unauthorized User');
+            } else {
+                next();
+            }
+        } catch (error) {
+            return res.status(400).send('Invalid Token');
+        }
         next();
     };
 }

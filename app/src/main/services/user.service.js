@@ -1,9 +1,15 @@
-const User = require("../api/user/user.model"); // Use the correct path to your User model
+const User = require("../api/user/user.model");
+const bcrypt = require("bcrypt");
 
 const UserService = {
     createUser: async (reqBody) => {
-        const user = new User(reqBody);
-        return user.save();
+        bcrypt.hash(reqBody.password, 10, (err, hash) => {
+            if (err) {
+                return { error: err };
+            }
+            const user = new User({ ...reqBody, password: hash });
+            return user.save();
+        });
     },
 
     getUserByEmail: async (email) => {

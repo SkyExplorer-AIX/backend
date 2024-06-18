@@ -7,7 +7,7 @@ const UserController = {
     },
 
     getUserByEmail: async (req, res) => {
-        const foundUser = await UserService.getUserByEmail(req.params.email);
+        const foundUser = await UserService.getUserByEmail(req.body.email);
         res.json(foundUser);
     },
 
