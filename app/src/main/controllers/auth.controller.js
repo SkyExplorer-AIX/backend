@@ -5,7 +5,7 @@ const AuthController = {
         const {email, password} = req.body;
         const result = await AuthService.login(email, password);
         if (result.error) {
-            res.status(401).json(result);
+            res.status(result.status).json(result);
         } else {
             res.json(result);
         }

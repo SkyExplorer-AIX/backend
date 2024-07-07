@@ -1,4 +1,4 @@
-const Lesson = require("../api/user/lesson.model");
+const Lesson = require("../api/lesson/lesson.model");
 
 const LessonService = {
     createLesson: async (reqBody) => {
