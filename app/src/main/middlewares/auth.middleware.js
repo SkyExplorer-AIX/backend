@@ -36,7 +36,7 @@ function hasRole(role) {
             return res.status(401).send('Access Denied: No Token Provided!');
 
         try {
-            req.user = jwt.decode(token, process.env.ACCESS_TOKEN_SECRET);
+            req.user = jwt.decode(token.replace("Bearer ", ""), process.env.ACCESS_TOKEN_SECRET);
 
             if (req.user.role !== role) {
                 return res.status(403).send('Access Denied: Unauthorized User');
@@ -44,9 +44,8 @@ function hasRole(role) {
                 next();
             }
         } catch (error) {
-            return res.status(400).send('Invalid Token');
+            return res.status(400).send(error.message);
         }
-        next();
     };
 }
 
