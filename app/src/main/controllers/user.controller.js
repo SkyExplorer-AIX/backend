@@ -1,5 +1,16 @@
 const UserService = require("../services/user.service"); // Use the correct path to UserService
 
+
+/**
+ * UserController object containing functions to handle user-related operations.
+ * @typedef {object} UserController
+ * @property {function} createUser - Function to create a new user.
+ * @property {function} getUserByEmail - Function to get a user by email.
+ * @property {function} updateUser - Function to update a user.
+ * @property {function} updateUserRole - Function to update a user's role.
+ * @property {function} deleteUser - Function to delete a user.
+ * @property {function} getAllUsers - Function to get all users.
+ */
 const UserController = {
     createUser: async (req, res) => {
         try {

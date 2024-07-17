@@ -1,5 +1,10 @@
 const LessonService = require('../services/lesson.service');
 
+/**
+ * The LessonController handles requests related to lessons.
+ *
+ * @namespace LessonController
+ */
 const LessonController = {
     createLesson: async (req, res) => {
         const createdLesson = await LessonService.createLesson(req.body);

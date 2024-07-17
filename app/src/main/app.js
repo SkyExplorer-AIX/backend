@@ -10,6 +10,12 @@ const authRoutes = require("./routes/auth.route");
 
 const app = express();
 
+/**
+ * Sets up necessary middleware for the given application.
+ *
+ * @param {Object} application - The Express application object.
+ * @return {undefined}
+ */
 function setupMiddleware(application) {
     application.use(corsMiddleware);
     // Parses request data

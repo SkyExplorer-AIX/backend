@@ -1,5 +1,9 @@
 const Lesson = require("../api/lesson/lesson.model");
 
+/**
+ * LessonService provides functions to interact with lessons in the system.
+ * @namespace
+ */
 const LessonService = {
     createLesson: async (reqBody) => {
         const lesson = new Lesson(reqBody);

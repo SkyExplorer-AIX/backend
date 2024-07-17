@@ -2,6 +2,10 @@ const User = require('../api/user/user.model');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+/**
+ * AuthService is responsible for handling user authentication and token verification.
+ * @namespace AuthService
+ */
 const AuthService = {
     login: async (email, password) => {
         const user = await User.findOne({email: email});

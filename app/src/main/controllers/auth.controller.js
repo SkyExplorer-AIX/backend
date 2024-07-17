@@ -1,5 +1,9 @@
 const AuthService = require('../services/auth.service');
 
+/**
+ * AuthController provides methods for user authentication and token verification.
+ * @namespace AuthController
+ */
 const AuthController = {
     login: async (req, res) => {
         const {email, password} = req.body;
